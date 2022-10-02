@@ -1,1 +1,10 @@
 0:https://2ch.hk/
+1:https://2ch.hk/b/
+2:https://2ch.hk/static/rules.html
+3:https://2ch.hk/static/m.html
+4:https://2ch.hk/static/market.html
+5:https://2ch.hk/au/
+6:https://2ch.hk/bi/
+7:https://2ch.hk/biz/
+8:https://2ch.hk/bo/
+9:https://2ch.hk/c/

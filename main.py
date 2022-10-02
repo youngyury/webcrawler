@@ -22,12 +22,12 @@ def get_page(url):
 def write_text_to_file(id, text, path_to_folder="data"):
     if not os.path.isdir(path_to_folder):
         os.makedirs(path_to_folder)
-    with open(os.path.join(path_to_folder, str(id) + ".html"), "w") as file:
+    with open(os.path.join(path_to_folder, str(id) + ".html"), "w", encoding="utf-8") as file:
         file.write(text)
 
 
 def add_url_to_file(id, url, path_to_file="urls.txt"):
-    with open(path_to_file, "a") as file:
+    with open(path_to_file, "a", encoding="utf-8") as file:
         file.write(str(id) + ":" + url + "\n")
 
 
@@ -49,20 +49,21 @@ def parse(url, counter):
     return new_links
 
 
-def parse_all(init_url, counter):
+def parse_all(init_url, counter, cnt):
+    exit = 0
     url_queue = Queue()
     url_queue.put(init_url)
-    while not url_queue.empty():
+    while not url_queue.empty() and exit < cnt:
         url = url_queue.get()
         add_list_to_queue(url_queue, parse(url, counter))
-
+        exit += 1
 
 def main():
     url = "https://2ch.hk/"
+    cnt = 10
     my_counter = SimpleCounter()
     open("urls.txt", "w")  # clear file
-
-    parse_all(url, my_counter)
+    parse_all(url, my_counter, cnt)
 
 
 main()
